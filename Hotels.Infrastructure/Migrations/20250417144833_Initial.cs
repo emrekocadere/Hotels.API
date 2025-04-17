@@ -77,18 +77,11 @@ namespace Hotels.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CheckIn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CheckOut = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HotelId = table.Column<int>(type: "int", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reservations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reservations_Hotels_HotelId",
-                        column: x => x.HotelId,
-                        principalTable: "Hotels",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Reservations_Rooms_RoomId",
                         column: x => x.RoomId,
@@ -102,11 +95,6 @@ namespace Hotels.Infrastructure.Migrations
                 table: "Hotels",
                 column: "AddressId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reservations_HotelId",
-                table: "Reservations",
-                column: "HotelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_RoomId",

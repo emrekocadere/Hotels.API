@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hotels.Infrastructure.Migrations
 {
     [DbContext(typeof(HotelDbContext))]
-    [Migration("20250415145935_Initial")]
+    [Migration("20250417144833_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -99,15 +99,10 @@ namespace Hotels.Infrastructure.Migrations
                     b.Property<DateTime>("CheckOut")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("HotelId")
-                        .HasColumnType("int");
-
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
 
                     b.HasIndex("RoomId");
 
@@ -148,19 +143,11 @@ namespace Hotels.Infrastructure.Migrations
 
             modelBuilder.Entity("Hotels.Domain.Entities.Reservation", b =>
                 {
-                    b.HasOne("Hotels.Domain.Entities.Hotel", "Hotel")
-                        .WithMany("Reservations")
-                        .HasForeignKey("HotelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Hotels.Domain.Entities.Room", "Room")
                         .WithMany("Reservations")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Hotel");
 
                     b.Navigation("Room");
                 });
@@ -183,8 +170,6 @@ namespace Hotels.Infrastructure.Migrations
 
             modelBuilder.Entity("Hotels.Domain.Entities.Hotel", b =>
                 {
-                    b.Navigation("Reservations");
-
                     b.Navigation("Rooms");
                 });
 
