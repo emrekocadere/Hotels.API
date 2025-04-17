@@ -1,3 +1,4 @@
+using Hotels.Application.Extensions;
 using Hotels.Infrastructure.Extensions;
 using Hotels.Infrastructure.Persistence;
 
@@ -15,7 +16,10 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        
+        
         builder.Services.AddInfrastructure(builder.Configuration);
+        builder.Services.AddApplication();
         
         
         var app = builder.Build();
