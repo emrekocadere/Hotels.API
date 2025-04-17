@@ -11,7 +11,7 @@ public class Hotel
     
     public Address? Address { get; set; }
     public ICollection<Room>? Rooms{ get; set; }
-    public ICollection<Reservation>? Reservations{ get; set; }
+
     
     
 
