@@ -1,4 +1,6 @@
+using Hotels.Domain.Repositories;
 using Hotels.Infrastructure.Persistence;
+using Hotels.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,5 +13,6 @@ public static class ServiceCollectionsExtensions
     {
         var connectionString = configuration.GetConnectionString("HotelsDb");
         services.AddDbContext<HotelDbContext>(options=> options.UseSqlServer(connectionString));
+        services.AddScoped<IHotelsRepository, HotelsRepository>();
     }
 }
