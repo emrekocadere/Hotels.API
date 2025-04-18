@@ -15,7 +15,7 @@ public class HotelsRepository(HotelDbContext dbContext): IHotelsRepository
 
     public async Task<Hotel?> GetByIdAsync(int id)
     {
-        var hotel = await dbContext.Hotels.FindAsync(id);
+        var hotel = await dbContext.Hotels.Include(h=>h.Rooms).FirstOrDefaultAsync(h=>h.Id == id);
         return hotel;
     }
 }

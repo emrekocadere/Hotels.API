@@ -16,10 +16,11 @@ public class HotelsService(IHotelsRepository hotelsRepository,IMapper mapper) : 
         return hotelsDtos;
     }
 
-    // public async Task<HotelDto?> GetById(int id)
-    // {
-    //     var hotel = await hotelsRepository.GetByIdAsync( id);
-    //     return hotel;
-    // }
+    public async Task<HotelWithRoomsDto?> GetById(int id)
+    {
+        var hotel = await hotelsRepository.GetByIdAsync(id);
+        var hotelsDtos=mapper.Map<HotelWithRoomsDto>(hotel);
+        return hotelsDtos;
+    }
 
 }
