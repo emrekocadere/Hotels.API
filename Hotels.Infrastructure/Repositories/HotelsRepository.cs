@@ -12,4 +12,10 @@ public class HotelsRepository(HotelDbContext dbContext): IHotelsRepository
         var hotels = await dbContext.Hotels.ToListAsync();
         return hotels;
     }
+
+    public async Task<Hotel?> GetByIdAsync(int id)
+    {
+        var hotel = await dbContext.Hotels.FindAsync(id);
+        return hotel;
+    }
 }

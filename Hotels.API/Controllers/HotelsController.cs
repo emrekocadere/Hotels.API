@@ -14,4 +14,14 @@ public class HotelsController(IHotelsService hotelsService):ControllerBase
        var hotels= await hotelsService.GetAllHotelsAsync();
        return Ok(hotels);
     }
+    
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetAll(int id)
+    {
+        var hotels= await hotelsService.GetById(id);
+        if(hotels is null)
+            return NotFound();
+        
+        return Ok(hotels);
+    }
 }

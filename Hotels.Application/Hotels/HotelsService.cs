@@ -11,4 +11,10 @@ public class HotelsService(IHotelsRepository hotelsRepository) : IHotelsService
         return hotels;
     }
 
+    public async Task<Hotel?> GetById(int id)
+    {
+        var hotel = await hotelsRepository.GetByIdAsync( id);
+        return hotel;
+    }
+
 }
