@@ -23,4 +23,11 @@ public class HotelsService(IHotelsRepository hotelsRepository,IMapper mapper) : 
         return hotelsDtos;
     }
 
+    public async Task<int> Create(CreateHotelDto dto)
+    {
+        var hotel = mapper.Map<Hotel>(dto);
+        int id = await hotelsRepository.Create(hotel);
+        return id;
+
+    }
 }

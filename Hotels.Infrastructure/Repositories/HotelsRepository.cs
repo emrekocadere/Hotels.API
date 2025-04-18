@@ -18,4 +18,11 @@ public class HotelsRepository(HotelDbContext dbContext): IHotelsRepository
         var hotel = await dbContext.Hotels.Include(h=>h.Rooms).FirstOrDefaultAsync(h=>h.Id == id);
         return hotel;
     }
+
+    public async Task<int> Create(Hotel hotel)
+    {
+         dbContext.Hotels.AddAsync(hotel);
+         await dbContext.SaveChangesAsync();
+         return hotel.Id;
+    }
 }
