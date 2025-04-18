@@ -9,7 +9,7 @@ public class HotelsRepository(HotelDbContext dbContext): IHotelsRepository
 {
     public async Task<IEnumerable<Hotel>> GetAllAsync()
     {
-        var hotels = await dbContext.Hotels.ToListAsync();
+        var hotels = await dbContext.Hotels.Include(h=>h.Address).ToListAsync();
         return hotels;
     }
 

@@ -11,14 +11,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Hotels.Infrastructure\Hotels.Infrastructure.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.15">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Hotels.Application\Hotels.Application.csproj" />
+      <ProjectReference Include="..\Hotels.Infrastructure\Hotels.Infrastructure.csproj" />
     </ItemGroup>
     
 </Project>

@@ -9,5 +9,6 @@ public static class ServiceCollectionsExtensions
     public static void AddApplication(this IServiceCollection services)
     {
         services.AddScoped<IHotelsService, HotelsService>();
+        services.AddAutoMapper(typeof(ServiceCollectionsExtensions).Assembly);
     }
 }
