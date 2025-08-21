@@ -1,6 +1,6 @@
 using Hotels.Application.Extensions;
 using Hotels.Infrastructure.Extensions;
-using Hotels.Infrastructure.Persistence;
+
 
 namespace Hotels.API;
 

@@ -15,7 +15,7 @@ public class HotelsRepository(HotelDbContext dbContext): IHotelsRepository
 
     public async Task<Hotel?> GetByIdAsync(int id)
     {
-        var hotel = await dbContext.Hotels.Include(h=>h.Rooms).FirstOrDefaultAsync(h=>h.Id == id);
+        var hotel = await dbContext.Hotels.FirstOrDefaultAsync(h=>h.Id == id);
         return hotel;
     }
 
@@ -24,5 +24,11 @@ public class HotelsRepository(HotelDbContext dbContext): IHotelsRepository
          dbContext.Hotels.AddAsync(hotel);
          await dbContext.SaveChangesAsync();
          return hotel.Id;
+    }
+
+    public async Task Delete(Hotel hotel)
+    {
+        dbContext.Remove(hotel);
+        await dbContext.SaveChangesAsync();
     }
 }

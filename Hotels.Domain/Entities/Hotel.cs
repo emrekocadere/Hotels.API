@@ -8,12 +8,8 @@ public class Hotel
     public required string ContactEmail { get; set; }
     public required string ContactNumber { get; set; }
     public required int AddressId { get; set; }
-    
     public Address? Address { get; set; }
-    public ICollection<Room>? Rooms{ get; set; }
 
     
-    
-
 }
 
