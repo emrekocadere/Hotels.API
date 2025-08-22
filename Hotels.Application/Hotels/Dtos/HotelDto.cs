@@ -4,11 +4,11 @@ public class HotelDto
 {
     public int Id { get; set; }
     public required string Name { get; set; }
-    public required string Star { get; set; }
+    public required short StarRating { get; set; }
     public required string ContactEmail { get; set; }
     public required string ContactNumber { get; set; }
-    public required string City { get; set; }
-    public required string Country { get; set; }
-    public required string PostalCode { get; set; }
+    public required int AddressId { get; set; }
+    public TimeOnly CheckInTime { get; set; }
+    public TimeOnly CheckOutTime { get; set; }
 
 }
