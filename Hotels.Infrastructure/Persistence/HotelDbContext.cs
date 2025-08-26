@@ -5,8 +5,9 @@ namespace Hotels.Infrastructure.Persistence;
 
 public class HotelDbContext(DbContextOptions<HotelDbContext> options) : DbContext(options)
 {
+    internal DbSet<City> Cities { get; set; }
+    internal DbSet<Country> Countries { get; set; }
     internal DbSet<Hotel> Hotels { get; set; }
-    internal DbSet<Reservation> Reservations { get; set; }
     internal DbSet<Feature> Features { get; set; }
     
 }
