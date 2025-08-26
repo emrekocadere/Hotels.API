@@ -10,4 +10,7 @@ public class HotelDbContext(DbContextOptions<HotelDbContext> options) : DbContex
     internal DbSet<Hotel> Hotels { get; set; }
     internal DbSet<Feature> Features { get; set; }
     
+    internal DbSet<Room> Rooms { get; set; }
+    internal DbSet<RoomFeature> RoomFeatures { get; set; }
+    
 }
