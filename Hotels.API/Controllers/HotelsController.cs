@@ -2,6 +2,7 @@ using FluentValidation;
 using Hotels.Application.Hotels;
 using Hotels.Application.Hotels.Commands.CreateHotel;
 using Hotels.Application.Hotels.Commands.DeleteHotel;
+using Hotels.Application.Hotels.Commands.UpdateHotel;
 using Hotels.Application.Hotels.Dtos;
 using Hotels.Application.Hotels.Queries.GetAllHotels;
 using Hotels.Application.Hotels.Queries.GetHotelById;
@@ -16,10 +17,11 @@ namespace Hotels.API.Controllers;
 public class HotelsController(IMediator mediator):ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<ActionResult<HotelDto>> GetAll()
     {
         var hotels = await mediator.Send(new GetAllHotelsQuery());
-       return Ok(hotels);
+        return NotFound(hotels);
+        
     }
     
     [HttpGet("{id}")]
@@ -30,6 +32,17 @@ public class HotelsController(IMediator mediator):ControllerBase
             return NotFound();
         
         return Ok(hotels);
+    }
+    
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateHotel(int id,UpdateHotelCommand command)
+    {
+        command.Id = id;
+        var isUpdated = await mediator.Send(command);
+        if(isUpdated)
+            return NoContent();
+        
+        return NotFound();
     }
     
     
