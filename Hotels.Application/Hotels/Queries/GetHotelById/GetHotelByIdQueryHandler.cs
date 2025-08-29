@@ -6,12 +6,13 @@ using MediatR;
 
 namespace Hotels.Application.Hotels.Queries.GetHotelById;
 
-public class GetHotelByIdQueryHandler(IMapper mapper, IHotelsRepository hotelsRepository):IRequestHandler<GetHotelByIdQuery,HotelDto?>
+public class GetHotelByIdQueryHandler(IMapper mapper, IRepository<Hotel> hotelsRepository)
+    : IRequestHandler<GetHotelByIdQuery, HotelDto?>
 {
     public async Task<HotelDto?> Handle(GetHotelByIdQuery request, CancellationToken cancellationToken)
     {
         var hotel = await hotelsRepository.GetByIdAsync(request.Id);
-        var hotelsDtos=mapper.Map<HotelDto>(hotel);
+        var hotelsDtos = mapper.Map<HotelDto>(hotel);
         return hotelsDtos;
     }
 }

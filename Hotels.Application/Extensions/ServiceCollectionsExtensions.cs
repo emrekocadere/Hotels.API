@@ -14,16 +14,15 @@ public static class ServiceCollectionsExtensions
 {
     public static void AddApplication(this IServiceCollection services)
     {
-
-        var applicationAssembly= typeof(ServiceCollectionsExtensions).Assembly;
+        var applicationAssembly = typeof(ServiceCollectionsExtensions).Assembly;
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));
-        
+
         services.AddAutoMapper(applicationAssembly);
-        
-        
-       // services.AddScoped<IValidator<CreateHotelCommand>, CreateHotelCommandValidator>();
-        
-        
+
+
+        // services.AddScoped<IValidator<CreateHotelCommand>, CreateHotelCommandValidator>();
+
+
         // ValidatorOptions.Global.LanguageManager = new LanguageManager()
         // {
         //     Culture = new CultureInfo("el")

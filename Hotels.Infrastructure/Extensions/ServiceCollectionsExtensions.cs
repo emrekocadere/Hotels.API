@@ -1,3 +1,4 @@
+using Hotels.Domain.Entities;
 using Hotels.Domain.Repositories;
 using Hotels.Infrastructure.Persistence;
 using Hotels.Infrastructure.Repositories;
@@ -9,10 +10,10 @@ namespace Hotels.Infrastructure.Extensions;
 
 public static class ServiceCollectionsExtensions
 {
-    public static void AddInfrastructure(this IServiceCollection services,IConfiguration configuration)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("HotelsDb");
-        services.AddDbContext<HotelDbContext>(options=> options.UseSqlServer(connectionString));
-        services.AddScoped<IHotelsRepository, HotelsRepository>();
+        services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(connectionString));
+        services.AddScoped<IRepository<Hotel>, Repository<Hotel>>();
     }
 }
