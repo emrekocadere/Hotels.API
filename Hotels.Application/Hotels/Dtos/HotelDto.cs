@@ -10,5 +10,4 @@ public class HotelDto
     public required int AddressId { get; set; }
     public TimeOnly CheckInTime { get; set; }
     public TimeOnly CheckOutTime { get; set; }
-
 }

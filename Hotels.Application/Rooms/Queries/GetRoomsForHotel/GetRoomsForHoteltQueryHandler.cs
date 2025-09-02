@@ -13,8 +13,5 @@ public class GetRoomsForHoteltQueryHandler(IRepository<Hotel> hotelRepository,IM
         var hotel = await hotelRepository.GetByIdAsync(request.HotelId);
         var roomDtos= mapper.Map<IEnumerable<RoomDto>>(hotel.Rooms);
         return roomDtos;
-
-
-
     }
 }

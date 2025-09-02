@@ -3,7 +3,6 @@ using MediatR;
 
 namespace Hotels.Application.Hotels.Queries.GetAllHotels;
 
-public class GetAllHotelsQuery:IRequest<IEnumerable<HotelDto>>
+public class GetAllHotelsQuery : IRequest<IEnumerable<HotelDto>>
 {
-    
 }

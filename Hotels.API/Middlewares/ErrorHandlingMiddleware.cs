@@ -1,6 +1,6 @@
 namespace Hotels.API.Middlewares;
 
-public class ErrorHandlingMiddleware:IMiddleware
+public class ErrorHandlingMiddleware : IMiddleware
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
