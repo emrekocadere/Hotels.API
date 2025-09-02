@@ -13,4 +13,5 @@ public class Hotel
 
     public City? City { get; set; }
     public ICollection<Feature>? Features { get; set; }
+    public ICollection<Room>? Rooms { get; set; }
 }

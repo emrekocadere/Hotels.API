@@ -1,4 +1,5 @@
 using Hotels.Application.Rooms.Commands.CreateRoom;
+using Hotels.Application.Rooms.Queries.GetRoomsForHotel;
 using Hotels.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -14,4 +15,12 @@ public class RoomController(IMediator mediator) : ControllerBase
         await mediator.Send(command);
         return Created();
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> CreateRoom([FromRoute] int hotelId)
+    {
+        var rooms=await mediator.Send(new GetRoomsForHotelQuery(hotelId));
+        return Created();
+    }
+
 }
