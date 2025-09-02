@@ -1,4 +1,4 @@
-namespace Hotels.Application.Hotels.Dtos;
+namespace Hotels.Application.Rooms.Dtos;
 
 public class RoomDto
 {

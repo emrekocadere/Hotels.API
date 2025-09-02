@@ -15,5 +15,6 @@ public static class ServiceCollectionsExtensions
         var connectionString = configuration.GetConnectionString("HotelsDb");
         services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(connectionString));
         services.AddScoped<IRepository<Hotel>, Repository<Hotel>>();
+        services.AddScoped<IRepository<Room>, Repository<Room>>();
     }
 }
