@@ -1,15 +1,13 @@
 using Hotels.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotels.Infrastructure.Persistence;
 
-public class HotelDbContext(DbContextOptions<HotelDbContext> options) : DbContext(options)
+public class HotelDbContext(DbContextOptions<HotelDbContext> options) : IdentityDbContext<User>(options)
 {
-    internal DbSet<City> Cities { get; set; }
-    internal DbSet<Country> Countries { get; set; }
-    internal DbSet<Hotel> Hotels { get; set; }
-    internal DbSet<Feature> Features { get; set; }
-
-    internal DbSet<Room> Rooms { get; set; }
-    internal DbSet<RoomFeature> RoomFeatures { get; set; }
+    public DbSet<Hotel> Hotels { get; set; }
+    public DbSet<Feature> Features { get; set; }
+    public DbSet<Room> Rooms { get; set; }
+    public DbSet<RoomFeature> RoomFeatures { get; set; }
 }
