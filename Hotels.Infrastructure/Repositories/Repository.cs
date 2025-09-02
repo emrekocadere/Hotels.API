@@ -1,14 +1,15 @@
 using Hotels.Domain.Repositories;
+using Hotels.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotels.Infrastructure.Repositories;
 
 public class Repository<T> : IRepository<T> where T : class
 {
-    protected readonly DbContext _dbContext;
+    protected readonly HotelDbContext _dbContext;
     protected readonly DbSet<T> _dbSet;
 
-    public Repository(DbContext context)
+    public Repository(HotelDbContext context)
     {
         _dbContext = context;
         _dbSet = context.Set<T>();
