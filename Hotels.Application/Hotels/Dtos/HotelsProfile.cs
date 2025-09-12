@@ -4,23 +4,20 @@ using Hotels.Domain.Entities;
 
 namespace Hotels.Application.Hotels.Dtos;
 
-public class HotelsProfile:Profile
+public class HotelsProfile : Profile
 {
     public HotelsProfile()
     {
-        CreateMap<CreateHotelCommand, Hotel>();
-            // .ForMember(d => d.Id,opt=>opt
-            //     .MapFrom(src=>new Address
-            //     {
-            //          City = src.City,
-            //          Country = src.Country,
-            //          PostalCode = src.PostalCode
-            //          
-            //     }));
+        CreateMap<CreateHotelCommand, Hotel>().ReverseMap();
+        // .ForMember(d => d.Id,opt=>opt
+        //     .MapFrom(src=>new Address
+        //     {
+        //          City = src.City,
+        //          Country = src.Country,
+        //          PostalCode = src.PostalCode
+        //          
+        //     }));
 
         CreateMap<Hotel, HotelDto>();
-
     }
 }
-
-

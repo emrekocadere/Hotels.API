@@ -11,5 +11,6 @@ public class CreateRoomCommandHandler(IRepository<Room> roomRepository,IMapper m
     {
         var room=mapper.Map<Room>(request);
         await roomRepository.Create(room);
+        await roomRepository.SaveChanges();
     } 
 }
