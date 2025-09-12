@@ -14,56 +14,54 @@ namespace Hotels.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class HotelsController(IMediator mediator):ControllerBase
+public class HotelsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<HotelDto>> GetAll()
     {
         var hotels = await mediator.Send(new GetAllHotelsQuery());
-        return NotFound(hotels);
-        
+        return Ok(hotels);
     }
-    
+
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         var hotels = await mediator.Send(new GetHotelByIdQuery(id));
-        if(hotels is null)
+        if (hotels is null)
             return NotFound();
-        
+
         return Ok(hotels);
     }
-    
+
     [HttpPatch("{id}")]
-    public async Task<IActionResult> UpdateHotel(int id,UpdateHotelCommand command)
+    public async Task<IActionResult> UpdateHotel(int id, UpdateHotelCommand command)
     {
         command.Id = id;
         var isUpdated = await mediator.Send(command);
-        if(isUpdated)
+        if (isUpdated)
             return NoContent();
-        
+
         return NotFound();
     }
-    
-    
-        
+
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteHotel(int id)
     {
         var isDeleted = await mediator.Send(new DeleteHotelCommand(id));
-        if(isDeleted)
+        if (isDeleted)
             return NoContent();
-        
+
         return NotFound();
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateHotel(CreateHotelCommand command)
     {
-       // var a = _validator.Validate(createHotelDto);
-        
-         int id=await mediator.Send(command);
+        // var a = _validator.Validate(createHotelDto);
+
+        int id = await mediator.Send(command);
         // return CreatedAtAction(nameof(GetById), new { id }, null);
         return Ok();
-    }   
+    }
 }
