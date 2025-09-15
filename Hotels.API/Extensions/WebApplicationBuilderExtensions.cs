@@ -7,7 +7,8 @@ public static class WebApplicationBuilderExtensions
 {
     public static void AddPresentation(this IServiceCollection services)
     {
-        
+
+        services.AddAuthentication();
         services.AddControllers();
         
         services.AddEndpointsApiExplorer();

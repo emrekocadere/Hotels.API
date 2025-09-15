@@ -7,6 +7,7 @@ using FluentValidation.Resources;
 using Hotels.Application.Hotels.Commands.CreateHotel;
 using Hotels.Application.Hotels.Dtos;
 using Hotels.Application.Hotels.Validators;
+using Hotels.Application.User;
 
 namespace Hotels.Application.Extensions;
 
@@ -18,6 +19,8 @@ public static class ServiceCollectionsExtensions
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(applicationAssembly));
 
         services.AddAutoMapper(applicationAssembly);
+        services.AddScoped<IUserContext, UserContext>();
+        services.AddHttpContextAccessor();
 
 
         // services.AddScoped<IValidator<CreateHotelCommand>, CreateHotelCommandValidator>();
