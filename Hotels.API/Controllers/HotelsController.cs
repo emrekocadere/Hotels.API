@@ -8,6 +8,7 @@ using Hotels.Application.Hotels.Queries.GetAllHotels;
 using Hotels.Application.Hotels.Queries.GetHotelById;
 using Hotels.Domain.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hotels.API.Controllers;

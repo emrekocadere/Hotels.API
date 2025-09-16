@@ -7,6 +7,7 @@ public class Room
     public double Price { get; set; }
     public int HotelId { get; set; }
 
+    public ICollection<Feature>? Features { get; set; }
     public Hotel? Hotel { get; set; }
-    public ICollection<RoomFeature?> RoomFeature { get; set; }
+    
 }

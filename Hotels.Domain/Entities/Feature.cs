@@ -6,4 +6,5 @@ public class Feature
     public required string Name { get; set; }
 
     public ICollection<Hotel>? Hotels { get; set; }
+    public ICollection<Room>? Rooms { get; set; }
 }
