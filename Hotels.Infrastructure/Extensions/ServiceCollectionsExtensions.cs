@@ -20,5 +20,8 @@ public static class ServiceCollectionsExtensions
             .AddEntityFrameworkStores<HotelDbContext>();      
         services.AddScoped<IRepository<Hotel>, Repository<Hotel>>();
         services.AddScoped<IRepository<Room>, Repository<Room>>();
+        services.AddScoped<IRepository<WishList>, Repository<WishList>>();
+        services.AddScoped<IWishListRepository, WishListRepository>();
+        services.AddScoped<IRepository<Domain.Entities.Reservation>, Repository<Domain.Entities.Reservation>>();
     }
 }
