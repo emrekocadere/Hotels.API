@@ -10,7 +10,6 @@ public class WishListRepository: Repository<WishList>,IWishListRepository
     {
         
     }
-
     public ICollection<WishList> GetWishListByUserId(string userId)
     {
        return  _dbSet.Where(x=>x.UserId==userId).ToList();

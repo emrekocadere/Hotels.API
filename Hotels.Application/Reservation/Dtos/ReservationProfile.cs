@@ -8,5 +8,6 @@ public class ReservationProfile:Profile
     public ReservationProfile()
     {
         CreateMap<CreateReservationCommand, Domain.Entities.Reservation>().ReverseMap();
+        CreateMap<Domain.Entities.Reservation, ReservationDto>();
     }
 }
