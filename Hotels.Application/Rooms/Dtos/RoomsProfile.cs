@@ -11,5 +11,6 @@ public class RoomsProfile:Profile
     public RoomsProfile()
     {
         CreateMap<CreateRoomCommand, Room>();
+        CreateMap<Room, RoomDto>();
     }
 }

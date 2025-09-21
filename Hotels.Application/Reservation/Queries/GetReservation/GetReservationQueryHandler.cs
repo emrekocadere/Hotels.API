@@ -19,6 +19,7 @@ public class GetReservationQueryHandler(
         var currentUserId=userContext.GetCurrentUser()!.Id;
 
         var reservations= reservationRepository.GetReservationByUserId(currentUserId);
+        
         var reservationDtos = mapper.Map<ICollection<ReservationDto>>(reservations);
 
         return reservationDtos.ToList();
