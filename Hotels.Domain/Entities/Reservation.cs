@@ -7,6 +7,7 @@ public class Reservation
     public DateOnly CheckOut { get; set; }
     public int RoomId { get; set; }
     public required string UserId { get; set; }
+    public bool IsCanceled { get; set; } = false;
     
     public Room? Room { get; set; }
     public User? User { get; set; }
