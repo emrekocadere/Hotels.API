@@ -16,6 +16,8 @@ public static class ServiceCollectionsExtensions
     {
         var connectionString = configuration.GetConnectionString("HotelsDb");
         services.AddDbContext<HotelDbContext>(options => options.UseSqlServer(connectionString));
+        
+        
         services.AddIdentityApiEndpoints<User>()
             .AddEntityFrameworkStores<HotelDbContext>();      
         services.AddScoped<IRepository<Hotel>, Repository<Hotel>>();
@@ -24,5 +26,6 @@ public static class ServiceCollectionsExtensions
         services.AddScoped<IWishListRepository, WishListRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
         services.AddScoped<IRepository<Domain.Entities.Reservation>, Repository<Domain.Entities.Reservation>>();
+        services.AddScoped<IReviewRepository, ReviewRepository>();
     }
 }

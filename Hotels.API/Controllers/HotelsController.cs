@@ -1,9 +1,12 @@
 using FluentValidation;
 using Hotels.Application.Hotels;
+using Hotels.Application.Hotels.Commands.AddReviewToHotel;
+using Hotels.Application.Hotels.Commands.AddReviewToHotel;
 using Hotels.Application.Hotels.Commands.CreateHotel;
 using Hotels.Application.Hotels.Commands.DeleteHotel;
 using Hotels.Application.Hotels.Commands.UpdateHotel;
 using Hotels.Application.Hotels.Dtos;
+using Hotels.Application.Hotels.Models;
 using Hotels.Application.Hotels.Queries.GetAllHotels;
 using Hotels.Application.Hotels.Queries.GetHotelById;
 using Hotels.Domain.Repositories;
@@ -64,5 +67,21 @@ public class HotelsController(IMediator mediator) : ControllerBase
         int id = await mediator.Send(command);
         // return CreatedAtAction(nameof(GetById), new { id }, null);
         return Ok();
+    }
+    
+    [HttpPost("{hotelId}/reviews")]
+    public async Task<IActionResult> AddReviewToHotel(int hotelId,AddCommentToHotelRequest commentDto)
+    {
+     
+
+        var id = await mediator.Send(new AddReviewToHotelCommand()
+        {
+            HotelId = hotelId,
+            Content = commentDto.Content,
+            Rating= commentDto.RatingStar
+            
+        });
+        // return CreatedAtAction(nameof(GetById), new { id }, null);
+        return Ok(id);
     }
 }

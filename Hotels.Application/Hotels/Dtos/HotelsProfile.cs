@@ -1,4 +1,5 @@
 using AutoMapper;
+using Hotels.Application.Hotels.Commands.AddReviewToHotel;
 using Hotels.Application.Hotels.Commands.CreateHotel;
 using Hotels.Domain.Entities;
 
@@ -19,5 +20,7 @@ public class HotelsProfile : Profile
         //     }));
 
         CreateMap<Hotel, HotelDto>();
+        
+        CreateMap<AddReviewToHotelCommand, Review>();
     }
 }
