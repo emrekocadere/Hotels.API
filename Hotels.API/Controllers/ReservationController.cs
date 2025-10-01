@@ -1,5 +1,6 @@
 using Hotels.Application.Reservation.Commands.CreateReservation;
 using Hotels.Application.Reservation.Commands.DeleteReservation;
+using Hotels.Application.Reservation.Commands.UpdateReservation;
 using Hotels.Application.Reservation.Queries.GetReservation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,14 @@ public class ReservationController(IMediator mediator):ControllerBase
     {
         var result = await mediator.Send(new DeleteReservationCommand(){ReservationId = reservationId});
         
+        return Ok(result);
+    }
+    
+    [HttpPut("reservations/{reservationId}")]
+    public async Task<IActionResult> UpdateReservation(int reservationId, UpdateReservationCommand command)
+    {
+        command.ReservationId = reservationId;
+        var result = await mediator.Send(command);
         return Ok(result);
     }
     
