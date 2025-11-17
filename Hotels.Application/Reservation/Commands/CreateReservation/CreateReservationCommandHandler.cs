@@ -1,8 +1,8 @@
 using AutoMapper;
 using Hotels.Application.Common;
-using Hotels.Application.User;
 using Hotels.Domain.Repositories;
 using MediatR;
+using IUserContext = Hotels.Application.Common.IUserContext;
 
 namespace Hotels.Application.Reservation.Commands.CreateReservation;
 
@@ -14,7 +14,7 @@ public class CreateReservationCommandHandler(
 {
     public async Task<Result> Handle(CreateReservationCommand request, CancellationToken cancellationToken)
     {
-        var currentUserId = userContext.GetCurrentUser()!.Id;
+        var currentUserId = userContext.UserId;
         var reservation = mapper.Map<Domain.Entities.Reservation>(request);
         
         reservation.UserId = currentUserId;

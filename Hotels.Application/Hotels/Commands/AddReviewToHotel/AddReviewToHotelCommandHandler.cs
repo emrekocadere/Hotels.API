@@ -1,10 +1,9 @@
 using AutoMapper;
 using Hotels.Application.Common;
-using Hotels.Application.Hotels.Dtos;
-using Hotels.Application.User;
 using Hotels.Domain.Entities;
 using Hotels.Domain.Repositories;
 using MediatR;
+using IUserContext = Hotels.Application.Common.IUserContext;
 
 namespace Hotels.Application.Hotels.Commands.AddReviewToHotel;
 
@@ -16,8 +15,8 @@ public class AddReviewToHotelCommandHandler(
    
 {
     public async Task<Result> Handle(AddReviewToHotelCommand request, CancellationToken cancellationToken)
-    { 
-        var currentUsedId = userContext.GetCurrentUser()!.Id;
+    {
+        var currentUsedId = userContext.UserId;
         
         var review = mapper.Map<Review>(request); 
         review.UserId = currentUsedId;

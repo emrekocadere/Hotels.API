@@ -1,9 +1,9 @@
 using AutoMapper;
 using Hotels.Application.Common;
-using Hotels.Application.User;
 using Hotels.Application.WishList.Dtos;
 using Hotels.Domain.Repositories;
 using MediatR;
+using IUserContext = Hotels.Application.Common.IUserContext;
 
 namespace Hotels.Application.WishList.Queries.GetWishlist;
 
@@ -15,7 +15,7 @@ public class GetWishListQueryHandler(
 {
     public async Task<ResultT<WishListDto>> Handle(GetWishListQuery request, CancellationToken cancellationToken) // look ath 
     {
-        string currentUserId = userContext.GetCurrentUser()!.Id;
+        string currentUserId = userContext.UserId;
         var wishList=wishListRepository.GetWishListByUserId(currentUserId);
         WishListDto wishListDto = new()
         {
