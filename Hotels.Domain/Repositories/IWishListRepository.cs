@@ -5,4 +5,5 @@ namespace Hotels.Domain.Repositories;
 public interface IWishListRepository: IRepository<WishList>
 {
     ICollection<WishList> GetWishListByUserId(string userId);
+     void DeleteHotelFromWishList(string userId, int hotelId);
 }

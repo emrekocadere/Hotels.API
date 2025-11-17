@@ -14,4 +14,9 @@ public class WishListRepository: Repository<WishList>,IWishListRepository
     {
        return  _dbSet.Where(x=>x.UserId==userId).ToList();
     }
+    
+    public void  DeleteHotelFromWishList(string userId,int hotelId)
+    {
+        _dbSet.Where(x=>x.UserId==userId && x.HotelId==hotelId).ToList().ForEach(x=>_dbSet.Remove(x)); // look at this
+    }
 }
