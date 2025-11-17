@@ -1,5 +1,7 @@
+using Hotels.Application.Common;
 using Hotels.Domain.Entities;
 using Hotels.Domain.Repositories;
+using Hotels.Infrastructure.Common;
 using Hotels.Infrastructure.Persistence;
 using Hotels.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -27,5 +29,6 @@ public static class ServiceCollectionsExtensions
         services.AddScoped<IReservationRepository, ReservationRepository>();
         services.AddScoped<IRepository<Domain.Entities.Reservation>, Repository<Domain.Entities.Reservation>>();
         services.AddScoped<IReviewRepository, ReviewRepository>();
+        services.AddScoped<IUserContext, UserContext>();
     }
 }
