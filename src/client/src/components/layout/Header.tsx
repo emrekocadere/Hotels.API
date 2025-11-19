@@ -20,14 +20,16 @@ const Header = () => {
             <span className="text-xl font-bold">HotelBooking</span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-slate-100 hover:text-white transition-colors font-medium">
-              Home
-            </Link>
-            <Link to="/hotels" className="text-slate-100 hover:text-white transition-colors font-medium">
-              Hotels
-            </Link>
-          </nav>
+          <div className="flex-1"></div>
+
+          <div className="hidden md:flex items-center mr-4">
+            <button className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-slate-600 transition-all">
+              <span className="font-medium">USD</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
 
           <div className="hidden md:flex items-center gap-3">
             {isAuthenticated ? (
@@ -66,7 +68,6 @@ const Header = () => {
                       className="block w-full text-left px-4 py-2 text-red-600 hover:bg-slate-100 transition-colors"
                       onClick={() => {
                         setIsUserMenuOpen(false);
-          
                       }}
                     >
                       Logout
@@ -85,6 +86,7 @@ const Header = () => {
               </>
             )}
           </div>
+
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
