@@ -22,5 +22,7 @@ public class HotelsProfile : Profile
         CreateMap<Hotel, HotelDto>();
         
         CreateMap<AddReviewToHotelCommand, Review>();
+
+            CreateMap<Review, ReviewDto>();
     }
 }

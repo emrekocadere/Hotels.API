@@ -9,6 +9,7 @@ using Hotels.Application.Hotels.Dtos;
 using Hotels.Application.Hotels.Models;
 using Hotels.Application.Hotels.Queries.GetAllHotels;
 using Hotels.Application.Hotels.Queries.GetHotelById;
+using Hotels.Application.Hotels.Queries.GetHotelReviews;
 using Hotels.Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -68,20 +69,28 @@ public class HotelsController(IMediator mediator) : ControllerBase
         // return CreatedAtAction(nameof(GetById), new { id }, null);
         return Ok();
     }
-    
+
     [HttpPost("{hotelId}/reviews")]
-    public async Task<IActionResult> AddReviewToHotel(int hotelId,AddCommentToHotelRequest commentDto)
+    public async Task<IActionResult> AddReviewToHotel(int hotelId, AddCommentToHotelRequest commentDto)
     {
-     
+
 
         var id = await mediator.Send(new AddReviewToHotelCommand()
         {
             HotelId = hotelId,
             Content = commentDto.Content,
-            Rating= commentDto.RatingStar
-            
+            Rating = commentDto.RatingStar
+
         });
         // return CreatedAtAction(nameof(GetById), new { id }, null);
+        return Ok(id);
+    }
+
+    [HttpGet("{hotelId}/reviews")]
+    public async Task<IActionResult> GetHotelReviews(int hotelId)
+    {
+        var id = await mediator.Send(new GetHotelReviewsQuery(hotelId));
+      
         return Ok(id);
     }
 }

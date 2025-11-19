@@ -13,7 +13,7 @@ public class ReviewRepository:Repository<Review>,IReviewRepository
 
     public IList<Review> GetReviewsByHotelId(int hotelId)
     {
-       var reviews= _dbSet.Where(x=>x.HotelId==hotelId).Include(x=>x.Hotel).ToList();
+       var reviews= _dbSet.AsNoTracking().Where(x=>x.HotelId==hotelId).ToList();
        return reviews;
     }
 }
