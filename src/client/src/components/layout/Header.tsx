@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const Header = () => {
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   
-
   const isAuthenticated = true; 
-  const user = { firstName: 'Salih Emre', lastName: 'Kocadere' };
+  const user = { firstName: 'Salih Emre', lastName: 'Kocadere' }; 
 
   return (
     <header className="sticky top-0 z-50 bg-slate-700/95 text-white shadow-lg backdrop-blur-sm">
@@ -67,7 +66,7 @@ const Header = () => {
                       className="block w-full text-left px-4 py-2 text-red-600 hover:bg-slate-100 transition-colors"
                       onClick={() => {
                         setIsUserMenuOpen(false);
-              
+          
                       }}
                     >
                       Logout
@@ -87,8 +86,77 @@ const Header = () => {
             )}
           </div>
 
- 
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-slate-600 transition-all"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="w-6 h-6 text-white"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isMenuOpen ? (
+                <path d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
+
+        {isMenuOpen && (
+          <nav className="md:hidden py-4 border-t border-slate-600">
+            <div className="flex flex-col space-y-4">
+              <Link
+                to="/"
+                className="text-slate-200 hover:text-white transition-colors font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link
+                to="/hotels"
+                className="text-slate-200 hover:text-white transition-colors font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Hotels
+              </Link>
+              <Link
+                to="/reservations"
+                className="text-slate-200 hover:text-white transition-colors font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                My Bookings
+              </Link>
+              <Link
+                to="/wishlist"
+                className="text-slate-200 hover:text-white transition-colors font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Wishlist
+              </Link>
+              <Link
+                to="/login"
+                className="text-slate-200 hover:text-white transition-colors font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign In
+              </Link>
+              <Link
+                to="/register"
+                className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-center font-medium shadow-md transform hover:scale-105 transition-all"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign Up
+              </Link>
+            </div>
+          </nav>
+        )}
       </div>
     </header>
   );
